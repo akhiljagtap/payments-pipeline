@@ -9,6 +9,10 @@ class Settings(BaseSettings):
     silver_path: str = "./data/silver"
     gold_path: str = "./data/gold"
     checkpoint_path: str = "./checkpoints"
+    
+    producer_max_events: int = 0
+    producer_min_delay_ms: int = 200
+    producer_max_delay_ms: int = 2000
 
     env: str = "local"
     log_level: str = "INFO"
