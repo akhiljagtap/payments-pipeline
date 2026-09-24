@@ -6,6 +6,9 @@ from confluent_kafka import Producer
 from src.common.config import settings
 from src.common.logger import get_logger
 from src.producer.event_factory import make_valid_event
+from src.producer.event_factory import make_valid_event, make_late_event, make_corrupt_event, recent_events, _remember
+from src.producer.ground_truth import log_event
+import json as json_lib
 
 log = get_logger(__name__)
 
@@ -47,12 +50,38 @@ if __name__ == "__main__":
     log.info("Producer starting. Press Ctrl+C to stop.")
 
     while running:
-        event = make_valid_event()
-        payload = event.model_dump_json()
+        roll = random.random()
+        key_for_send = None
+
+        if roll < settings.fault_duplicate_rate and recent_events:
+            event = random.choice(recent_events)
+            payload = event.model_dump_json()
+            key_for_send = event.card_id
+            log_event("duplicate", event.transaction_id, "resent from recent buffer")
+
+        elif roll < settings.fault_duplicate_rate + settings.fault_late_rate:
+            event = make_late_event()
+            payload = event.model_dump_json()
+            key_for_send = event.card_id
+            _remember(event)
+            log_event("late", event.transaction_id, f"backdated to {event.event_time}")
+
+        elif roll < settings.fault_duplicate_rate + settings.fault_late_rate + settings.fault_corrupt_rate:
+            corrupt_payload = make_corrupt_event()
+            payload = json_lib.dumps(corrupt_payload)
+            txn_id = corrupt_payload.get("transaction_id", "unknown")
+            key_for_send = txn_id
+            log_event("corrupt", txn_id, corrupt_payload.get("__corruption_type__", "broken_json"))
+
+        else:
+            event = make_valid_event()
+            payload = event.model_dump_json()
+            key_for_send = event.card_id
+            _remember(event)
 
         producer.produce(
             topic=settings.kafka_topic_transactions,
-            key=event.card_id,
+            key=key_for_send,
             value=payload,
             callback=delivery_report,
         )

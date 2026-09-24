@@ -13,6 +13,10 @@ class Settings(BaseSettings):
     producer_max_events: int = 0
     producer_min_delay_ms: int = 200
     producer_max_delay_ms: int = 2000
+    
+    fault_duplicate_rate: float = 0.05
+    fault_late_rate: float = 0.05
+    fault_corrupt_rate: float = 0.03
 
     env: str = "local"
     log_level: str = "INFO"
