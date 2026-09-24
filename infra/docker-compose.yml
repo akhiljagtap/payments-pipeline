@@ -16,6 +16,29 @@ services:
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
     volumes:
       - kafka-data:/var/lib/kafka/data
+    networks:
+      - payments-net
+
+  spark:
+    image: apache/spark:3.5.3
+    container_name: payments-spark
+    user: root
+    environment:
+      SPARK_MODE: master
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../src:/opt/app/src
+      - ../data:/opt/app/data
+      - ../checkpoints:/opt/app/checkpoints
+    networks:
+      - payments-net
+    entrypoint: ["tail", "-f", "/dev/null"]
+    tty: true
 
 volumes:
   kafka-data:
+
+networks:
+  payments-net:
+    driver: bridge
