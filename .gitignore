@@ -4,4 +4,5 @@ __pycache__/
 data/
 checkpoints/
 .env
-q.md
+why.md
+how.md
