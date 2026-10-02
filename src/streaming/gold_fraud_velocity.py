@@ -8,7 +8,7 @@ silver_stream = (
     spark.readStream
     .format("delta")
     .load("/opt/app/data/silver/transactions")
-    .withWatermark("kafka_timestamp", "1 minutes")
+    .withWatermark("kafka_timestamp", "10 minutes")
 )
 
 velocity_alerts = (
@@ -29,12 +29,10 @@ velocity_alerts = (
 
 query = (
     velocity_alerts.writeStream
-    .format("console")
-    .outputMode("update")
-    .option("truncate", "false")
-    .option("checkpointLocation", "/opt/app/checkpoints/gold_fraud_velocity_test")
-    .trigger(processingTime="30 seconds")
-    .start()
+    .format("delta")
+    .outputMode("append")
+    .option("checkpointLocation", "/opt/app/checkpoints/gold_fraud_velocity")
+    .trigger(processingTime="60 seconds")
+    .start("/opt/app/data/gold/fraud_velocity_alerts")
 )
-
 query.awaitTermination()
