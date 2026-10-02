@@ -1,7 +1,10 @@
 """"
     This is a small, separate file whose only job is to record what we deliberately broke,
     so we can verify the pipeline handled it correctly later.
+    i.e - Record what bad data the producer intentionally created.
 """
+
+
 
 import json
 import os

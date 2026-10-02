@@ -25,10 +25,10 @@ def make_valid_event() -> PaymentEvent:
     )
 
 #Fult injection logic
-
 recent_events: list[PaymentEvent] = []
 MAX_RECENT = 50
 
+#Internal private function 
 def _remember(event: PaymentEvent):
     recent_events.append(event)
     if len(recent_events) > MAX_RECENT:
