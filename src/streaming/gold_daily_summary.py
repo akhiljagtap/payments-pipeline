@@ -36,12 +36,11 @@ daily_summary = (
 
 query = (
     daily_summary.writeStream
-    .format("console")
-    .outputMode("update")
-    .option("truncate", "false")
-    .option("checkpointLocation", "/opt/app/checkpoints/gold_daily_summary_test")
-    .trigger(processingTime="30 seconds")
-    .start()
+    .format("delta")
+    .outputMode("append")
+    .option("checkpointLocation", "/opt/app/checkpoints/gold_daily_summary")
+    .trigger(processingTime="60 seconds")
+    .start("/opt/app/data/gold/daily_summary")
 )
 
 query.awaitTermination()
