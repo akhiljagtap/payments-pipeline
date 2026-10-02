@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 fake = Faker()
 
-CARD_POOL = [f"card_{i:05d}" for i in range(1, 501)]
+CARD_POOL = [f"card_{i:05d}" for i in range(1, 31)]
 MERCHANT_POOL = [f"m_{i:04d}" for i in range(1, 101)]
 CHANNELS = ["ECOM", "POS", "ATM"]
 COUNTRIES = ["IN", "US", "GB", "AE"]
