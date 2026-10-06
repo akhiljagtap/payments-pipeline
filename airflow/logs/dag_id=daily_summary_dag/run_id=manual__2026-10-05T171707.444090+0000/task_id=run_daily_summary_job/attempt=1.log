@@ -1,0 +1,290 @@
+[2026-10-05T17:17:09.134+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-10-05T17:17:09.367+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_summary_dag.run_daily_summary_job manual__2026-10-05T17:17:07.444090+00:00 [queued]>
+[2026-10-05T17:17:09.387+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_summary_dag.run_daily_summary_job manual__2026-10-05T17:17:07.444090+00:00 [queued]>
+[2026-10-05T17:17:09.389+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-10-05T17:17:09.419+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): run_daily_summary_job> on 2026-10-05 17:17:07.444090+00:00
+[2026-10-05T17:17:09.430+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_summary_dag', 'run_daily_summary_job', 'manual__2026-10-05T17:17:07.444090+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/daily_summary_dag.py', '--cfg-path', '/tmp/tmppadx1fm9']
+[2026-10-05T17:17:09.434+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask run_daily_summary_job
+[2026-10-05T17:17:09.438+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=904) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-10-05T17:17:09.439+0000] {standard_task_runner.py:64} INFO - Started process 905 to run task
+[2026-10-05T17:17:09.503+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_summary_dag.run_daily_summary_job manual__2026-10-05T17:17:07.444090+00:00 [running]> on host 7aa1a14f0756
+[2026-10-05T17:17:09.649+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='akhil' AIRFLOW_CTX_DAG_ID='daily_summary_dag' AIRFLOW_CTX_TASK_ID='run_daily_summary_job' AIRFLOW_CTX_EXECUTION_DATE='2026-10-05T17:17:07.444090+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-10-05T17:17:07.444090+00:00'
+[2026-10-05T17:17:09.653+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-10-05T17:17:09.728+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-05T17:17:09.730+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'docker exec -e PYTHONPATH=/opt/app payments-spark /opt/spark/bin/spark-submit --packages io.delta:delta-spark_2.12:3.2.0 --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog /opt/app/src/streaming/gold_daily_summary.py']
+[2026-10-05T17:17:09.749+0000] {subprocess.py:86} INFO - Output:
+[2026-10-05T17:17:13.088+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2026-10-05T17:17:13.227+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /root/.ivy2/cache
+[2026-10-05T17:17:13.228+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /root/.ivy2/jars
+[2026-10-05T17:17:13.234+0000] {subprocess.py:93} INFO - io.delta#delta-spark_2.12 added as a dependency
+[2026-10-05T17:17:13.236+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-8182031f-524e-4fcd-85f7-2f69b554fca8;1.0
+[2026-10-05T17:17:13.237+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2026-10-05T17:17:13.385+0000] {subprocess.py:93} INFO - 	found io.delta#delta-spark_2.12;3.2.0 in central
+[2026-10-05T17:17:13.417+0000] {subprocess.py:93} INFO - 	found io.delta#delta-storage;3.2.0 in central
+[2026-10-05T17:17:13.443+0000] {subprocess.py:93} INFO - 	found org.antlr#antlr4-runtime;4.9.3 in central
+[2026-10-05T17:17:13.468+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 221ms :: artifacts dl 9ms
+[2026-10-05T17:17:13.470+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2026-10-05T17:17:13.470+0000] {subprocess.py:93} INFO - 	io.delta#delta-spark_2.12;3.2.0 from central in [default]
+[2026-10-05T17:17:13.472+0000] {subprocess.py:93} INFO - 	io.delta#delta-storage;3.2.0 from central in [default]
+[2026-10-05T17:17:13.473+0000] {subprocess.py:93} INFO - 	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+[2026-10-05T17:17:13.474+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2026-10-05T17:17:13.474+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2026-10-05T17:17:13.475+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2026-10-05T17:17:13.476+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2026-10-05T17:17:13.476+0000] {subprocess.py:93} INFO - 	|      default     |   3   |   0   |   0   |   0   ||   3   |   0   |
+[2026-10-05T17:17:13.477+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2026-10-05T17:17:13.477+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-8182031f-524e-4fcd-85f7-2f69b554fca8
+[2026-10-05T17:17:13.477+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2026-10-05T17:17:13.484+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 3 already retrieved (0kB/7ms)
+[2026-10-05T17:17:13.807+0000] {subprocess.py:93} INFO - 26/10/05 17:17:13 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-10-05T17:17:15.026+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkContext: Running Spark version 3.5.3
+[2026-10-05T17:17:15.028+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkContext: OS info Linux, 5.15.153.1-microsoft-standard-WSL2, amd64
+[2026-10-05T17:17:15.029+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkContext: Java version 11.0.24
+[2026-10-05T17:17:15.063+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO ResourceUtils: ==============================================================
+[2026-10-05T17:17:15.064+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2026-10-05T17:17:15.065+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO ResourceUtils: ==============================================================
+[2026-10-05T17:17:15.066+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkContext: Submitted application: GoldDailySummary
+[2026-10-05T17:17:15.103+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2026-10-05T17:17:15.119+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO ResourceProfile: Limiting resource is cpu
+[2026-10-05T17:17:15.120+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2026-10-05T17:17:15.223+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SecurityManager: Changing view acls to: root
+[2026-10-05T17:17:15.225+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SecurityManager: Changing modify acls to: root
+[2026-10-05T17:17:15.226+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SecurityManager: Changing view acls groups to:
+[2026-10-05T17:17:15.227+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SecurityManager: Changing modify acls groups to:
+[2026-10-05T17:17:15.228+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+[2026-10-05T17:17:15.608+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO Utils: Successfully started service 'sparkDriver' on port 44131.
+[2026-10-05T17:17:15.657+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkEnv: Registering MapOutputTracker
+[2026-10-05T17:17:15.703+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkEnv: Registering BlockManagerMaster
+[2026-10-05T17:17:15.729+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2026-10-05T17:17:15.730+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2026-10-05T17:17:15.735+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2026-10-05T17:17:15.775+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-db403888-32e5-419f-8939-28d95f7facb8
+[2026-10-05T17:17:15.797+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2026-10-05T17:17:15.817+0000] {subprocess.py:93} INFO - 26/10/05 17:17:15 INFO SparkEnv: Registering OutputCommitCoordinator
+[2026-10-05T17:17:16.024+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2026-10-05T17:17:16.133+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2026-10-05T17:17:16.183+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO SparkContext: Added JAR file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar at spark://d2c30ec5c415:44131/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.184+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO SparkContext: Added JAR file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar at spark://d2c30ec5c415:44131/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.184+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar at spark://d2c30ec5c415:44131/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.189+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO SparkContext: Added file file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar at file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.191+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Copying /root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-spark_2.12-3.2.0.jar
+[2026-10-05T17:17:16.241+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO SparkContext: Added file file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar at file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.242+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Copying /root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-storage-3.2.0.jar
+[2026-10-05T17:17:16.250+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO SparkContext: Added file file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar at file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.251+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Copying /root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/org.antlr_antlr4-runtime-4.9.3.jar
+[2026-10-05T17:17:16.359+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Starting executor ID driver on host d2c30ec5c415
+[2026-10-05T17:17:16.359+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: OS info Linux, 5.15.153.1-microsoft-standard-WSL2, amd64
+[2026-10-05T17:17:16.360+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Java version 11.0.24
+[2026-10-05T17:17:16.368+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2026-10-05T17:17:16.369+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@45d34c16 for default.
+[2026-10-05T17:17:16.384+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Fetching file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.416+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: /root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar has been previously copied to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-spark_2.12-3.2.0.jar
+[2026-10-05T17:17:16.425+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Fetching file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.426+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: /root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar has been previously copied to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-storage-3.2.0.jar
+[2026-10-05T17:17:16.440+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Fetching file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.441+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: /root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar has been previously copied to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/org.antlr_antlr4-runtime-4.9.3.jar
+[2026-10-05T17:17:16.453+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Fetching spark://d2c30ec5c415:44131/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.500+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO TransportClientFactory: Successfully created connection to d2c30ec5c415/172.20.0.3:44131 after 31 ms (0 ms spent in bootstraps)
+[2026-10-05T17:17:16.508+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Fetching spark://d2c30ec5c415:44131/jars/io.delta_delta-spark_2.12-3.2.0.jar to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/fetchFileTemp16233870689375173905.tmp
+[2026-10-05T17:17:16.582+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/fetchFileTemp16233870689375173905.tmp has been previously copied to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-spark_2.12-3.2.0.jar
+[2026-10-05T17:17:16.591+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Adding file:/tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-spark_2.12-3.2.0.jar to class loader default
+[2026-10-05T17:17:16.592+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Fetching spark://d2c30ec5c415:44131/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.593+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Fetching spark://d2c30ec5c415:44131/jars/org.antlr_antlr4-runtime-4.9.3.jar to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/fetchFileTemp9983150943173265169.tmp
+[2026-10-05T17:17:16.596+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/fetchFileTemp9983150943173265169.tmp has been previously copied to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/org.antlr_antlr4-runtime-4.9.3.jar
+[2026-10-05T17:17:16.602+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Adding file:/tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/org.antlr_antlr4-runtime-4.9.3.jar to class loader default
+[2026-10-05T17:17:16.603+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Fetching spark://d2c30ec5c415:44131/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791220635011
+[2026-10-05T17:17:16.605+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Fetching spark://d2c30ec5c415:44131/jars/io.delta_delta-storage-3.2.0.jar to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/fetchFileTemp7257495752356334871.tmp
+[2026-10-05T17:17:16.606+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/fetchFileTemp7257495752356334871.tmp has been previously copied to /tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-storage-3.2.0.jar
+[2026-10-05T17:17:16.614+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Executor: Adding file:/tmp/spark-57827f52-839b-452f-83f6-39ad7cbeaf10/userFiles-bb0e89f0-9309-4544-9751-fab42ba37797/io.delta_delta-storage-3.2.0.jar to class loader default
+[2026-10-05T17:17:16.627+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 35985.
+[2026-10-05T17:17:16.628+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO NettyBlockTransferService: Server created on d2c30ec5c415:35985
+[2026-10-05T17:17:16.629+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2026-10-05T17:17:16.637+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, d2c30ec5c415, 35985, None)
+[2026-10-05T17:17:16.642+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO BlockManagerMasterEndpoint: Registering block manager d2c30ec5c415:35985 with 434.4 MiB RAM, BlockManagerId(driver, d2c30ec5c415, 35985, None)
+[2026-10-05T17:17:16.650+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, d2c30ec5c415, 35985, None)
+[2026-10-05T17:17:16.653+0000] {subprocess.py:93} INFO - 26/10/05 17:17:16 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, d2c30ec5c415, 35985, None)
+[2026-10-05T17:17:25.616+0000] {subprocess.py:93} INFO - 26/10/05 17:17:25 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[2026-10-05T17:17:27.003+0000] {subprocess.py:93} INFO - 26/10/05 17:17:27 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[2026-10-05T17:18:46.800+0000] {job.py:218} ERROR - Job heartbeat got an exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "***-postgres" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/jobs/job.py", line 192, in heartbeat
+    self._merge_from(Job._fetch_from_db(self, session))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/retries.py", line 89, in wrapped_function
+    for attempt in run_with_db_retries(max_retries=retries, logger=logger, **retry_kwargs):
+  File "/home/airflow/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 443, in __iter__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 376, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/retries.py", line 98, in wrapped_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/jobs/job.py", line 316, in _fetch_from_db
+    session.merge(job)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3056, in merge
+    return self._merge(
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3136, in _merge
+    merged = self.get(
+             ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2853, in get
+    return self._get_impl(
+           ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2975, in _get_impl
+    return db_load_fn(
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 530, in load_on_pk_identity
+    session.execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/future/engine.py", line 412, in connect
+    return super(Engine, self).connect()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "***-postgres" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2026-10-05T17:19:16.230+0000] {job.py:226} ERROR - Job heartbeat failed with error. Scheduler is in unhealthy state
+[2026-10-05T17:19:16.798+0000] {subprocess.py:97} INFO - Command exited with return code 137
+[2026-10-05T17:19:16.806+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-10-05T17:19:16.889+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 137.
+[2026-10-05T17:19:16.918+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=daily_summary_dag, task_id=run_daily_summary_job, run_id=manual__2026-10-05T17:17:07.444090+00:00, execution_date=20261005T171707, start_date=20261005T171709, end_date=20261005T171916
+[2026-10-05T17:19:16.960+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 5 for task run_daily_summary_job (Bash command failed. The command returned a non-zero exit code 137.; 905)
+[2026-10-05T17:19:17.011+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-10-05T17:19:17.050+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-05T17:19:17.052+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

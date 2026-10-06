@@ -1,0 +1,145 @@
+[2026-10-06T17:01:35.532+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-10-06T17:01:35.626+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_summary_dag.run_daily_summary_job manual__2026-10-06T17:01:34.483588+00:00 [queued]>
+[2026-10-06T17:01:35.637+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_summary_dag.run_daily_summary_job manual__2026-10-06T17:01:34.483588+00:00 [queued]>
+[2026-10-06T17:01:35.638+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-10-06T17:01:35.658+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): run_daily_summary_job> on 2026-10-06 17:01:34.483588+00:00
+[2026-10-06T17:01:35.673+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'daily_summary_dag', 'run_daily_summary_job', 'manual__2026-10-06T17:01:34.483588+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/daily_summary_dag.py', '--cfg-path', '/tmp/tmpb1s5qz3_']
+[2026-10-06T17:01:35.677+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask run_daily_summary_job
+[2026-10-06T17:01:35.681+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=267) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-10-06T17:01:35.682+0000] {standard_task_runner.py:64} INFO - Started process 268 to run task
+[2026-10-06T17:01:35.754+0000] {task_command.py:426} INFO - Running <TaskInstance: daily_summary_dag.run_daily_summary_job manual__2026-10-06T17:01:34.483588+00:00 [running]> on host 7aa1a14f0756
+[2026-10-06T17:01:35.893+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='akhil' AIRFLOW_CTX_DAG_ID='daily_summary_dag' AIRFLOW_CTX_TASK_ID='run_daily_summary_job' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T17:01:34.483588+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-10-06T17:01:34.483588+00:00'
+[2026-10-06T17:01:35.895+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-10-06T17:01:35.943+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-06T17:01:35.947+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'docker exec -e PYTHONPATH=/opt/app payments-spark /opt/spark/bin/spark-submit --packages io.delta:delta-spark_2.12:3.2.0 --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog /opt/app/src/streaming/gold_daily_summary.py']
+[2026-10-06T17:01:35.969+0000] {subprocess.py:86} INFO - Output:
+[2026-10-06T17:01:39.500+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2026-10-06T17:01:39.644+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /root/.ivy2/cache
+[2026-10-06T17:01:39.645+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /root/.ivy2/jars
+[2026-10-06T17:01:39.653+0000] {subprocess.py:93} INFO - io.delta#delta-spark_2.12 added as a dependency
+[2026-10-06T17:01:39.656+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-2a51f9fc-6596-449c-9259-e80b236fd996;1.0
+[2026-10-06T17:01:39.656+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2026-10-06T17:01:39.809+0000] {subprocess.py:93} INFO - 	found io.delta#delta-spark_2.12;3.2.0 in central
+[2026-10-06T17:01:39.842+0000] {subprocess.py:93} INFO - 	found io.delta#delta-storage;3.2.0 in central
+[2026-10-06T17:01:39.866+0000] {subprocess.py:93} INFO - 	found org.antlr#antlr4-runtime;4.9.3 in central
+[2026-10-06T17:01:39.889+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 224ms :: artifacts dl 8ms
+[2026-10-06T17:01:39.890+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2026-10-06T17:01:39.891+0000] {subprocess.py:93} INFO - 	io.delta#delta-spark_2.12;3.2.0 from central in [default]
+[2026-10-06T17:01:39.893+0000] {subprocess.py:93} INFO - 	io.delta#delta-storage;3.2.0 from central in [default]
+[2026-10-06T17:01:39.894+0000] {subprocess.py:93} INFO - 	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+[2026-10-06T17:01:39.895+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2026-10-06T17:01:39.897+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2026-10-06T17:01:39.898+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2026-10-06T17:01:39.899+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2026-10-06T17:01:39.900+0000] {subprocess.py:93} INFO - 	|      default     |   3   |   0   |   0   |   0   ||   3   |   0   |
+[2026-10-06T17:01:39.901+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2026-10-06T17:01:39.902+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-2a51f9fc-6596-449c-9259-e80b236fd996
+[2026-10-06T17:01:39.904+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2026-10-06T17:01:39.907+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 3 already retrieved (0kB/11ms)
+[2026-10-06T17:01:40.247+0000] {subprocess.py:93} INFO - 26/10/06 17:01:40 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-10-06T17:01:41.373+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SparkContext: Running Spark version 3.5.3
+[2026-10-06T17:01:41.375+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SparkContext: OS info Linux, 5.15.153.1-microsoft-standard-WSL2, amd64
+[2026-10-06T17:01:41.376+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SparkContext: Java version 11.0.24
+[2026-10-06T17:01:41.413+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO ResourceUtils: ==============================================================
+[2026-10-06T17:01:41.414+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2026-10-06T17:01:41.415+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO ResourceUtils: ==============================================================
+[2026-10-06T17:01:41.416+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SparkContext: Submitted application: GoldDailySummary
+[2026-10-06T17:01:41.463+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2026-10-06T17:01:41.481+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO ResourceProfile: Limiting resource is cpu
+[2026-10-06T17:01:41.482+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2026-10-06T17:01:41.586+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SecurityManager: Changing view acls to: root
+[2026-10-06T17:01:41.588+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SecurityManager: Changing modify acls to: root
+[2026-10-06T17:01:41.589+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SecurityManager: Changing view acls groups to:
+[2026-10-06T17:01:41.590+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SecurityManager: Changing modify acls groups to:
+[2026-10-06T17:01:41.591+0000] {subprocess.py:93} INFO - 26/10/06 17:01:41 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+[2026-10-06T17:01:42.029+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: Successfully started service 'sparkDriver' on port 46581.
+[2026-10-06T17:01:42.094+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkEnv: Registering MapOutputTracker
+[2026-10-06T17:01:42.146+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkEnv: Registering BlockManagerMaster
+[2026-10-06T17:01:42.174+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2026-10-06T17:01:42.175+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2026-10-06T17:01:42.182+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2026-10-06T17:01:42.222+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-b681546f-2657-4c38-bbac-85696a78e207
+[2026-10-06T17:01:42.245+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2026-10-06T17:01:42.266+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkEnv: Registering OutputCommitCoordinator
+[2026-10-06T17:01:42.495+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2026-10-06T17:01:42.596+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2026-10-06T17:01:42.647+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkContext: Added JAR file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar at spark://d2c30ec5c415:46581/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.648+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkContext: Added JAR file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar at spark://d2c30ec5c415:46581/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.649+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar at spark://d2c30ec5c415:46581/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.653+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkContext: Added file file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar at file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.656+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: Copying /root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-spark_2.12-3.2.0.jar
+[2026-10-06T17:01:42.713+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkContext: Added file file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar at file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.714+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: Copying /root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-storage-3.2.0.jar
+[2026-10-06T17:01:42.722+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO SparkContext: Added file file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar at file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.723+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: Copying /root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/org.antlr_antlr4-runtime-4.9.3.jar
+[2026-10-06T17:01:42.837+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Starting executor ID driver on host d2c30ec5c415
+[2026-10-06T17:01:42.838+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: OS info Linux, 5.15.153.1-microsoft-standard-WSL2, amd64
+[2026-10-06T17:01:42.838+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Java version 11.0.24
+[2026-10-06T17:01:42.847+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2026-10-06T17:01:42.847+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@2c443828 for default.
+[2026-10-06T17:01:42.862+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Fetching file:///root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.892+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: /root/.ivy2/jars/io.delta_delta-spark_2.12-3.2.0.jar has been previously copied to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-spark_2.12-3.2.0.jar
+[2026-10-06T17:01:42.899+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Fetching file:///root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.900+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: /root/.ivy2/jars/io.delta_delta-storage-3.2.0.jar has been previously copied to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-storage-3.2.0.jar
+[2026-10-06T17:01:42.908+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Fetching file:///root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.908+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: /root/.ivy2/jars/org.antlr_antlr4-runtime-4.9.3.jar has been previously copied to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/org.antlr_antlr4-runtime-4.9.3.jar
+[2026-10-06T17:01:42.919+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Executor: Fetching spark://d2c30ec5c415:46581/jars/io.delta_delta-spark_2.12-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:42.988+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO TransportClientFactory: Successfully created connection to d2c30ec5c415/172.20.0.3:46581 after 48 ms (0 ms spent in bootstraps)
+[2026-10-06T17:01:43.001+0000] {subprocess.py:93} INFO - 26/10/06 17:01:42 INFO Utils: Fetching spark://d2c30ec5c415:46581/jars/io.delta_delta-spark_2.12-3.2.0.jar to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/fetchFileTemp11225660031983382638.tmp
+[2026-10-06T17:01:43.113+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Utils: /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/fetchFileTemp11225660031983382638.tmp has been previously copied to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-spark_2.12-3.2.0.jar
+[2026-10-06T17:01:43.152+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Executor: Adding file:/tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-spark_2.12-3.2.0.jar to class loader default
+[2026-10-06T17:01:43.153+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Executor: Fetching spark://d2c30ec5c415:46581/jars/org.antlr_antlr4-runtime-4.9.3.jar with timestamp 1791306101358
+[2026-10-06T17:01:43.155+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Utils: Fetching spark://d2c30ec5c415:46581/jars/org.antlr_antlr4-runtime-4.9.3.jar to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/fetchFileTemp6062853212832348260.tmp
+[2026-10-06T17:01:43.159+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Utils: /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/fetchFileTemp6062853212832348260.tmp has been previously copied to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/org.antlr_antlr4-runtime-4.9.3.jar
+[2026-10-06T17:01:43.170+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Executor: Adding file:/tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/org.antlr_antlr4-runtime-4.9.3.jar to class loader default
+[2026-10-06T17:01:43.171+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Executor: Fetching spark://d2c30ec5c415:46581/jars/io.delta_delta-storage-3.2.0.jar with timestamp 1791306101358
+[2026-10-06T17:01:43.173+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Utils: Fetching spark://d2c30ec5c415:46581/jars/io.delta_delta-storage-3.2.0.jar to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/fetchFileTemp14218519726479042933.tmp
+[2026-10-06T17:01:43.176+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Utils: /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/fetchFileTemp14218519726479042933.tmp has been previously copied to /tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-storage-3.2.0.jar
+[2026-10-06T17:01:43.184+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Executor: Adding file:/tmp/spark-3c290547-3124-447e-906f-b85a90f4a34e/userFiles-35bba63a-e364-4827-adeb-fb9a2190f4b5/io.delta_delta-storage-3.2.0.jar to class loader default
+[2026-10-06T17:01:43.201+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36479.
+[2026-10-06T17:01:43.202+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO NettyBlockTransferService: Server created on d2c30ec5c415:36479
+[2026-10-06T17:01:43.206+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2026-10-06T17:01:43.217+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, d2c30ec5c415, 36479, None)
+[2026-10-06T17:01:43.223+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO BlockManagerMasterEndpoint: Registering block manager d2c30ec5c415:36479 with 434.4 MiB RAM, BlockManagerId(driver, d2c30ec5c415, 36479, None)
+[2026-10-06T17:01:43.226+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, d2c30ec5c415, 36479, None)
+[2026-10-06T17:01:43.229+0000] {subprocess.py:93} INFO - 26/10/06 17:01:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, d2c30ec5c415, 36479, None)
+[2026-10-06T17:01:52.221+0000] {subprocess.py:93} INFO - 26/10/06 17:01:52 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+[2026-10-06T17:01:53.744+0000] {subprocess.py:93} INFO - 26/10/06 17:01:53 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[2026-10-06T17:09:16.169+0000] {local_task_job_runner.py:313} WARNING - State of this instance has been externally set to None. Terminating instance.
+[2026-10-06T17:09:16.198+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-10-06T17:09:16.208+0000] {process_utils.py:132} INFO - Sending 15 to group 268. PIDs of all processes in the group: [269, 268]
+[2026-10-06T17:09:16.212+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 268
+[2026-10-06T17:09:16.237+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-10-06T17:09:16.444+0000] {subprocess.py:104} INFO - Sending SIGTERM signal to process group
+[2026-10-06T17:09:16.453+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-10-06T17:09:16.568+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 234, in execute
+    result = self.subprocess_hook.run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/hooks/subprocess.py", line 91, in run_command
+    for raw_line in iter(self.sub_process.stdout.readline, b""):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2613, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2026-10-06T17:09:16.605+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=daily_summary_dag, task_id=run_daily_summary_job, run_id=manual__2026-10-06T17:01:34.483588+00:00, execution_date=20261006T170134, start_date=20261006T170135, end_date=20261006T170916
+[2026-10-06T17:09:16.683+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 9 for task run_daily_summary_job ((psycopg2.errors.ForeignKeyViolation) insert or update on table "task_fail" violates foreign key constraint "task_fail_ti_fkey"
+DETAIL:  Key (dag_id, task_id, run_id, map_index)=(daily_summary_dag, run_daily_summary_job, manual__2026-10-06T17:01:34.483588+00:00, -1) is not present in table "task_instance".
+
+[SQL: INSERT INTO task_fail (task_id, dag_id, run_id, map_index, start_date, end_date, duration) VALUES (%(task_id)s, %(dag_id)s, %(run_id)s, %(map_index)s, %(start_date)s, %(end_date)s, %(duration)s) RETURNING task_fail.id]
+[parameters: {'task_id': 'run_daily_summary_job', 'dag_id': 'daily_summary_dag', 'run_id': 'manual__2026-10-06T17:01:34.483588+00:00', 'map_index': -1, 'start_date': datetime.datetime(2026, 10, 6, 17, 1, 35, 626722, tzinfo=Timezone('UTC')), 'end_date': datetime.datetime(2026, 10, 6, 17, 9, 16, 589685, tzinfo=Timezone('UTC')), 'duration': 460}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 268)
+[2026-10-06T17:09:16.749+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=268, status='terminated', exitcode=1, started='17:01:35') (268) terminated with exit code 1
+[2026-10-06T17:10:16.224+0000] {process_utils.py:150} WARNING - process psutil.Process(pid=269, name='docker', status='zombie', started='17:01:35') did not respond to SIGTERM. Trying SIGKILL
+[2026-10-06T17:10:16.243+0000] {process_utils.py:87} INFO - Sending the signal 9 to group 268
+[2026-10-06T17:10:16.244+0000] {process_utils.py:101} INFO - Sending the signal 9 to process 268 as process group is missing.
+[2026-10-06T17:11:16.270+0000] {process_utils.py:161} ERROR - Process psutil.Process(pid=269, name='docker', status='zombie', started='17:01:35') (269) could not be killed. Giving up.

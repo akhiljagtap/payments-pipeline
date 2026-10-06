@@ -34,12 +34,13 @@ daily_summary = (
     )
 )
 
+
 query = (
     daily_summary.writeStream
     .format("delta")
     .outputMode("append")
     .option("checkpointLocation", "/opt/app/checkpoints/gold_daily_summary")
-    .trigger(processingTime="60 seconds")
+    .trigger(availableNow=True)
     .start("/opt/app/data/gold/daily_summary")
 )
 
