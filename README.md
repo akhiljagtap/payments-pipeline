@@ -155,14 +155,7 @@ payments-pipeline/
 
 ---
 
-## What's next
-
-- **Statistical outlier fraud rule** — a second, complementary fraud signal (unusually large transaction *for that specific card*, via stream-to-stream self-join) alongside the existing velocity-based rule
-- **Deliberate chaos/resilience test** — documented kill-and-restart demonstration with before/after row counts
-- **Automated topic provisioning** — currently a manual one-time setup step
-
----
 
 ## About
 
-Built by Akhil Jagtap as a portfolio project applying streaming data engineering concepts in a realistic, failure-aware system — not a tutorial walkthrough, but a pipeline debugged, broken, and fixed the way real systems are.
+Built by Akhil Jagtap(Data Engineer)  as a portfolio project applying streaming data engineering concepts in a realistic, failure-aware system — not a tutorial walkthrough, but a pipeline debugged, broken, and fixed the way real systems are.
