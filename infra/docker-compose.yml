@@ -38,27 +38,12 @@ services:
     entrypoint: ["tail", "-f", "/dev/null"]
     tty: true
 
-  airflow-postgres:
-    image: postgres:15
-    container_name: payments-airflow-postgres
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
-    volumes:
-      - airflow-postgres-data:/var/lib/postgresql/data
-    networks:
-      - payments-net
-
   airflow:
     image: apache/airflow:2.9.3
     container_name: payments-airflow
     user: root
-    depends_on:
-      - airflow-postgres
     environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres:5432/airflow
+      AIRFLOW__CORE__EXECUTOR: SequentialExecutor
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
     ports:
@@ -74,7 +59,6 @@ services:
 
 volumes:
   kafka-data:
-  airflow-postgres-data:
 
 networks:
   payments-net:

@@ -10,8 +10,19 @@ from src.producer.event_factory import make_valid_event, make_late_event, make_c
 from src.producer.ground_truth import log_event
 import json as json_lib
 
+#passing the name of the current Python module/file to get_logger()
 log = get_logger(__name__)
 
+"""
+logging module provid this -
+
+DEBUG
+INFO
+WARNING
+ERROR
+CRITICAL
+
+"""
 
 def delivery_report(err, msg):
     if err is not None:

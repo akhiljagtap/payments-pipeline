@@ -11,7 +11,7 @@ with DAG(
     dag_id="daily_summary_dag",
     default_args=default_args,
     description="Triggers the Gold daily summary Spark job",
-    schedule=None,
+    schedule="0 0 * * *",
     start_date=datetime(2026, 10, 1),
     catchup=False,
     tags=["payments-pipeline", "gold"],
@@ -27,4 +27,18 @@ with DAG(
             "--conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog "
             "/opt/app/src/streaming/gold_daily_summary.py"
         ),
+    ),
+    run_reconciliation_check = BashOperator(
+        task_id="run_reconciliation_check",
+        bash_command=(
+            "docker exec -e PYTHONPATH=/opt/app payments-spark "
+            "/opt/spark/bin/spark-submit "
+            "--packages io.delta:delta-spark_2.12:3.2.0 "
+            "--conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension "
+            "--conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog "
+            "/opt/app/src/streaming/reconciliation_check.py"
+        ),
     )
+
+    run_daily_summary >> run_reconciliation_check
+    
