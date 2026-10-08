@@ -1,10 +1,5 @@
 # Payments Streaming Pipeline
 
-A production-style, end-to-end streaming data pipeline that ingests payment transactions in real time, validates and deduplicates them, detects fraud patterns, and serves aggregated analytics — all running locally with Docker, built around the same architectural patterns used in real payments infrastructure.
-
-Built as a hands-on portfolio project to deepen practical skills in streaming data engineering: Kafka, Spark Structured Streaming, Delta Lake, and Airflow orchestration.
-
-
 ## Architecture
 
 ```
